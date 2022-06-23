@@ -1,0 +1,15 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: min(95%, 850px);
+  margin: 1rem auto;
+}
+
+.details-log {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+  /* background-color: blue;
+  color: white;
+  padding: 0.5rem 1rem; */
+}

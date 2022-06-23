@@ -1,0 +1,78 @@
+<div class="card">
+  <div class="card-header">
+    <h3>my-first works!</h3>
+  </div>
+  <div class="card-body">
+    <div class="form-floating">
+      <input
+        type="text"
+        id="username"
+        [(ngModel)]="username"
+        class="form-control"
+        placeholder="username"
+      />
+      <label for="username" class="text-success" style="font-weight: bold;"
+        >Username</label
+      >
+    </div>
+
+    <p class="text-danger font-weight-bold p-2">{{ username }}</p>
+    <div class="btngroup">
+      <button
+        class="btn btn-primary"
+        (click)="onReset()"
+        [disabled]="username === ''"
+      >
+        Reset
+      </button>
+      <button
+        class="btn btn-primary"
+        (click)="username = 'initial value'"
+        [disabled]="username !== ''"
+      >
+        Initial Value
+      </button>
+    </div>
+    <br />
+
+    <div class="detalis-section" *ngIf="username !== ''">
+      <div class="details-group">
+        <button class="btn btn-outline-primary" (click)="onToggleDisplay()">
+          {{ displayDetais ? 'Hide' : 'Display' }} Details
+        </button>
+
+        <p *ngIf="displayDetais && username !== ''">Password : tuna</p>
+      </div>
+      <br />
+      <p
+        *ngFor="let log of logs"
+        class="details-log"
+        [ngStyle]="{
+          background: log.status === 'Details displayed' ? 'blue' : ''
+        }"
+        [ngClass]="{ 'text-white': log.status === 'Details displayed' }"
+      >
+        {{ log.time }} : {{ log.status }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<!-- Source card -->
+<div
+  class="card border-danger"
+  id="source-card"
+  name="source-card"
+  *ngIf="source"
+  style="max-width: min(80%,800px)"
+>
+  <div class="card-header text-white bg-danger">
+    <h5>Source Area</h5>
+  </div>
+  <div
+    class="card-body text-center fs-3 fw-semibold font-monospace text-uppercase"
+  >
+    <p class="text-primary">Redirict from : {{ source }}</p>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="card">
+  <div class="card-header">
+    <h3>Game Control!</h3>
+  </div>
+  <div class="card-body">
+    <div class="btngroup">
+      <button
+        class="btn {{ gameOn ? 'btn-outline-primary' : 'btn-primary' }}"
+        (click)="onStartGame()"
+        [disabled]="gameOn"
+      >
+        Start Game
+      </button>
+      <button
+        class="btn {{ !gameOn ? 'btn-outline-danger' : 'btn-danger' }}"
+        (click)="onStopGame()"
+        [disabled]="!gameOn"
+      >
+        Pause game
+      </button>
+      <button
+        appResetStyle
+        classNames="btn btn-outline-danger"
+        *ngIf="gameNumber > 0"
+        class=""
+        (click)="onResetpGame()"
+      >
+        Reset game
+      </button>
+      <button
+        class="btn btn-outline-danger"
+        *ngIf="gameNumber > 0"
+        (click)="onResetAndBack()"
+      >
+        Reset And Go Back
+      </button>
+    </div>
+    <br />
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <button class="btn btn-success" (click)="swapComponents = !swapComponents">
+    Change numbers order
+  </button>
+</div>
+
+<ng-container *appUnless="swapComponents">
+  <ng-container *ngFor="let number of numbers">
+    <app-odd-number
+      [oddNumber]="number.number"
+      *ngIf="number.type == 'odd'"
+    ></app-odd-number>
+    <app-even-number *ngIf="number.type == 'even'">
+      {{ number.number }}
+    </app-even-number>
+  </ng-container>
+</ng-container>
+
+<ng-container *appUnless="!swapComponents">
+  <ng-container *ngFor="let number of numbers.reverse()">
+    <app-odd-number
+      [oddNumber]="number.number"
+      *ngIf="number.type == 'odd'"
+    ></app-odd-number>
+    <app-even-number *ngIf="number.type == 'even'">
+      {{ number.number }}
+    </app-even-number>
+  </ng-container>
+</ng-container>
+
+<div *appUnless="!swapComponents">
+  <app-odd-number
+    *ngFor="let number of oddNumbers"
+    [oddNumber]="number"
+  ></app-odd-number>
+
+  <app-even-number
+    *ngFor="let number of evenNumbers"
+    [evenNumber]="number"
+  ></app-even-number>
+</div>
+
+<div *appUnless="swapComponents">
+  <app-even-number
+    *ngFor="let number of evenNumbers"
+    [evenNumber]="number"
+  ></app-even-number>
+
+  <app-odd-number
+    *ngFor="let number of oddNumbers"
+    [oddNumber]="number"
+  ></app-odd-number>
+</div>

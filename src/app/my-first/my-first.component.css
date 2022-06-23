@@ -1,0 +1,33 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.btngroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btngroup button {
+  padding: 5px 20px;
+}
+
+.details-group {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.details-group p {
+  font-weight: bold;
+  color: red;
+}
+
+.details-log {
+  margin: 0.3rem 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+}

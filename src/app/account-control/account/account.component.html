@@ -1,0 +1,50 @@
+<div class="card border-{{ classname }}">
+  <!-- <div
+    class="card-header text-white bg-{{ classname }}"
+     [routerLink]="['/accounts', account.id]"
+
+  > -->
+  <div
+    class="card-header text-white bg-{{ classname }}"
+    (click)="viewAccount()"
+  >
+    <h5>{{ account.name }}</h5>
+  </div>
+  <div class="card-body">
+    <p class="text-{{ classname }}">
+      This account is currently {{ account.status }}
+    </p>
+    <div class="btngroup">
+      <button
+        class="btn {{
+          account.status == 'active' ? 'btn-success' : 'btn-outline-success'
+        }}"
+        (click)="onSetTo('active')"
+        [disabled]="account.status == 'active'"
+      >
+        Active
+      </button>
+      <button
+        class="btn {{
+          account.status == 'inactive' ? 'btn-danger' : 'btn-outline-danger'
+        }}"
+        (click)="onSetTo('inactive')"
+        [disabled]="account.status == 'inactive'"
+      >
+        Inactive
+      </button>
+      <button
+        class="btn {{
+          account.status == 'unknown'
+            ? 'btn-secondary'
+            : 'btn-outline-secondary'
+        }}"
+        [disabled]="account.status == 'unknown'"
+        (click)="onSetTo('unknown')"
+      >
+        Unknown
+      </button>
+    </div>
+    <br />
+  </div>
+</div>

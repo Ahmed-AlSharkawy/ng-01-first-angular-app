@@ -1,0 +1,21 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: min(90%, 540px);
+  margin: 0 auto;
+}
+
+.card input,
+.card select {
+  margin-bottom: 1rem;
+}
+
+.btngroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btngroup button {
+  padding: 5px 20px;
+}

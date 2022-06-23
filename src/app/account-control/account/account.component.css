@@ -1,0 +1,27 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: min(90%, 740px);
+  margin: 2rem auto;
+}
+
+.card-header {
+  cursor: pointer;
+}
+
+p {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.btngroup {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.btngroup button {
+  padding: 3px 10px;
+}

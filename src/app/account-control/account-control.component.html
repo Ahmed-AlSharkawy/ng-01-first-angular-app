@@ -1,0 +1,9 @@
+<router-outlet></router-outlet>
+<app-new-account></app-new-account>
+<p class="border-danger text-danger" *ngIf="activeInactive">
+  Active --> Inactive operations count : {{ activeInactive }}
+</p>
+<p class="border-success text-success" *ngIf="inactiveActive">
+  Inactive --> Active operations count : {{ inactiveActive }}
+</p>
+<app-account *ngFor="let account of accounts" [account]="account"></app-account>
