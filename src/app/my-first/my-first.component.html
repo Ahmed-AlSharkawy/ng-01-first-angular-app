@@ -1,36 +1,66 @@
 <div class="card">
   <div class="card-header">
+    <h3>First Custom Observable</h3>
+  </div>
+  <div class="card-body">
+    <div class="observable-form">
+      <div class="form-group">
+        <label for="start-number" class="text-success" style="font-weight: bold;">Start number</label>
+        <input type="number" id="start-number" [(ngModel)]="startNumber" class="form-control"
+          placeholder="start number" />
+      </div>
+
+      <div class="form-group">
+        <label for="max-number" class="text-success" style="font-weight: bold;">Max number</label>
+        <input type="number" id="max-number" [(ngModel)]="maxNumber" class="form-control" placeholder="max number" />
+      </div>
+
+      <div class="form-group">
+        <label for="bad-number" class="text-success" style="font-weight: bold;">Bad number</label>
+        <input type="number" id="bad-number" [(ngModel)]="badNumber" class="form-control" placeholder="bad number" />
+      </div>
+    </div>
+
+    <div class="observable-btngroup">
+      <button class="btn btn-{{ observableState }}" (click)="startCustomObservable(false)"
+        [disabled]="observableState == 'primary'">
+        Start Observable
+      </button>
+      <p class="text-{{ observableState }} font-weight-bold p-2">{{ observableValue }}</p>
+    </div>
+
+    <div class="observable-btngroup">
+      <button class="btn btn-{{ observableState }}" (click)="startCustomObservable(true)"
+        [disabled]="observableState == 'primary'">
+        Start Obs operators
+      </button>
+      <p class="text-{{ observableState }} font-weight-bold p-2">{{ observableValue }}</p>
+    </div>
+  </div>
+</div>
+
+<br><br>
+
+<div class="card">
+  <div class="card-header">
     <h3>my-first works!</h3>
   </div>
   <div class="card-body">
     <div class="form-floating">
-      <input
-        type="text"
-        id="username"
-        [(ngModel)]="username"
-        class="form-control"
-        placeholder="username"
-      />
-      <label for="username" class="text-success" style="font-weight: bold;"
-        >Username</label
-      >
+      <input type="text" id="username" [(ngModel)]="username" class="form-control" placeholder="username" />
+      <label for="username" class="text-success" style="font-weight: bold;">Username</label>
     </div>
 
     <p class="text-danger font-weight-bold p-2">{{ username }}</p>
     <div class="btngroup">
-      <button
-        class="btn btn-primary"
-        (click)="onReset()"
-        [disabled]="username === ''"
-      >
+      <button class="btn btn-primary" (click)="onReset()" [disabled]="username === ''">
         Reset
       </button>
-      <button
-        class="btn btn-primary"
-        (click)="username = 'initial value'"
-        [disabled]="username !== ''"
-      >
+      <button class="btn btn-primary" (click)="username = 'initial value'" [disabled]="username !== ''">
         Initial Value
+      </button>
+      <button class="btn btn-primary" (click)="toggleObservable()">
+        {{isObsOn ? 'End Observable' : 'Start Observable'}}
       </button>
     </div>
     <br />
@@ -44,14 +74,9 @@
         <p *ngIf="displayDetais && username !== ''">Password : tuna</p>
       </div>
       <br />
-      <p
-        *ngFor="let log of logs"
-        class="details-log"
-        [ngStyle]="{
+      <p *ngFor="let log of logs" class="details-log" [ngStyle]="{
           background: log.status === 'Details displayed' ? 'blue' : ''
-        }"
-        [ngClass]="{ 'text-white': log.status === 'Details displayed' }"
-      >
+        }" [ngClass]="{ 'text-white': log.status === 'Details displayed' }">
         {{ log.time }} : {{ log.status }}
       </p>
     </div>
@@ -60,19 +85,11 @@
 
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <!-- Source card -->
-<div
-  class="card border-danger"
-  id="source-card"
-  name="source-card"
-  *ngIf="source"
-  style="max-width: min(80%,800px)"
->
+<div class="card border-danger" id="source-card" name="source-card" *ngIf="source" style="max-width: min(80%,800px)">
   <div class="card-header text-white bg-danger">
     <h5>Source Area</h5>
   </div>
-  <div
-    class="card-body text-center fs-3 fw-semibold font-monospace text-uppercase"
-  >
+  <div class="card-body text-center fs-3 fw-semibold font-monospace text-uppercase">
     <p class="text-primary">Redirict from : {{ source }}</p>
   </div>
 </div>
