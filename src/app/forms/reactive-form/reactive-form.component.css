@@ -1,7 +1,7 @@
 .card {
     display: flex;
     flex-direction: column;
-    max-width: min(90%, 940px);
+    max-width: 90%;
     margin: 2rem auto;
 }
 
@@ -15,7 +15,7 @@ h3 {
 }
 
 form {
-    max-width: min(100%, 940px);
+    max-width: min(100%, 1040px);
     padding: 1rem 2rem;
     margin: 0 auto;
 }

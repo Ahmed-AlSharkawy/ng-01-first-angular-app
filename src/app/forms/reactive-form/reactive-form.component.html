@@ -1,7 +1,7 @@
 <!-- <div class="card">
   <div class="card-header"> -->
 
-<h3>Template Forms</h3>
+<h3>Reactive Forms</h3>
 <!-- </div>
   <div class="card-body container"> -->
 
@@ -70,8 +70,8 @@
 
       <div class="row form-group g-3" formArrayName="statesData">
         <div class="col-md-3">
-          <label class="">States</label>
-          <button type="button" class="btn btn-info text-white" (click)="onAddState()">Add State</button>
+          <label class="d-block">States</label>
+          <button type="button" class="btn btn-info text-white w-100" (click)="onAddState()">Add State</button>
         </div>
         <div class="col-md-3" *ngFor="let control of reactiveForm.get('statesData')['controls']; let i = index">
           <p class="error up">
