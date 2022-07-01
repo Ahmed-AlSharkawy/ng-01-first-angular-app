@@ -9,6 +9,9 @@ import { AuthGuard } from './shared/auth-guard.service';
 import { CanDeactivateGuard } from './shared/can-deactivate-guard.service';
 import { ErrorResolver } from './shared/error-resolver.service';
 import { ErrorComponent } from './error/error.component';
+import { FormsComponent } from './forms/forms.component';
+import { TemplateFormComponent } from './forms/template-form/template-form.component';
+import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
 
 const appRoutes: Routes = [
   { path: '', component: MyFirstComponent },
@@ -23,6 +26,11 @@ const appRoutes: Routes = [
     component: AccountControlComponent,
     canActivateChild: [AuthGuard],
     children: [{ path: ':id', component: AccountComponent }],
+  },
+  {
+    path: 'forms',
+    component: FormsComponent,
+    children: [{ path: 'template', component: TemplateFormComponent }, { path: 'reactive', component: ReactiveFormComponent }],
   },
   {
     path: 'error',
@@ -45,4 +53,4 @@ const appRoutes: Routes = [
   declarations: [],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

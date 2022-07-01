@@ -1,29 +1,16 @@
 <nav class="nav nav-pills nav-fill">
-  <button
-    routerLink="/"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    [queryParams]="{ source: 'navbar' }"
-    fragment="source-card"
-    class="nav-link"
-  >
+  <button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+    [queryParams]="{ source: 'navbar' }" fragment="source-card" class="nav-link">
     Home
   </button>
-  <button
-    routerLink="/game"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    class="nav-link"
-  >
+  <button routerLink="/game" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
     Game
   </button>
-  <button
-    routerLink="/accounts"
-    routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }"
-    class="nav-link"
-  >
+  <button routerLink="/accounts" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
     Accounts
+  </button>
+  <button routerLink="/forms" routerLinkActive="active" class="nav-link">
+    Forms
   </button>
 </nav>
 

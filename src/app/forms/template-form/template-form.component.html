@@ -1,0 +1,119 @@
+<!-- <div class="card">
+  <div class="card-header"> -->
+
+<h3>Template Forms</h3>
+<!-- </div>
+  <div class="card-body container"> -->
+
+<div class="row">
+  <div class="col-lg-8">
+    <form class="row" (ngSubmit)="onSubmit()" #form="ngForm">
+      <div class="login-data row form-group g-3" ngModelGroup="loginData" #login="ngModelGroup">
+        <div class="col-md-6">
+          <label for="email-input" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email-input" name="email" required ngModel email
+            #email="ngModel">
+          <p class="error" *ngIf="email.invalid && email.touched">* email should be in email pattern</p>
+        </div>
+        <div class="col-md-6">
+          <label for="password-input" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password-input" name="password" ngModel required minlength="5"
+            maxlength="15" #password="ngModel">
+          <p class="error" *ngIf="password.invalid && password.touched">* password should be between 5 and 15 letters
+          </p>
+        </div>
+      </div>
+      <p class="error" *ngIf="login.invalid && login.touched">* login data is not complete</p>
+
+
+      <div class="personal-data row form-group g-3" ngModelGroup="personalData" #personal="ngModelGroup">
+        <div class="col-12">
+          <label for="address-input" class="form-label">Address</label>
+          <input type="text" class="form-control" id="address-input" placeholder="1234 Main St" name="addressA" ngModel
+            required #address="ngModel">
+          <p class="error" *ngIf="address.invalid && address.touched">* address is required</p>
+
+        </div>
+        <div class="col-12">
+          <label for="address-input-2" class="form-label">Address 2</label>
+          <input type="text" class="form-control" id="address-input-2" placeholder="Apartment, studio, or floor"
+            name="addressB" ngModel>
+        </div>
+        <div class="col-md-6">
+          <label for="city-input" class="form-label">City</label>
+          <input type="text" class="form-control" id="city-input" name="city" ngModel required #city="ngModel">
+          <p class="error" *ngIf="city.invalid && city.touched">* city is required</p>
+
+        </div>
+        <div class="col-md-4">
+          <label for="state-input" class="form-label">State</label>
+          <select id="state-input" class="form-select" name="state" ngModel required #state="ngModel">
+            <option *ngFor="let item of states; let i = index;" value="{{item}}">{{item}}</option>
+          </select>
+          <p class="error" *ngIf="state.invalid && state.touched">* state is required</p>
+
+        </div>
+        <div class="col-md-2">
+          <label for="zip-input" class="form-label">Zip</label>
+          <input type="text" class="form-control" id="zip-input" name="zip" ngModel>
+        </div>
+      </div>
+      <p class="error" *ngIf="personal.invalid && personal.touched">* personal data is not complete</p>
+
+      <div class="options-data row form-group g-3" ngModelGroup="optionsData">
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="remember-check" name="remember" ngModel>
+            <label class="form-check-label" for="remember-check">
+              Remember me
+            </label>
+          </div>
+        </div>
+
+        <fieldset class="row g-3">
+          <legend class="col-form-label col-md-4 pt-0">Account type</legend>
+          <div class="form-check col-md-4">
+            <input class="form-check-input" type="radio" name="type" id="free-option" value="free" ngModel required
+              #type="ngModel">
+            <label class="form-check-label" for="free-option">
+              Free account
+            </label>
+          </div>
+          <div class="form-check col-md-4">
+            <input class="form-check-input" type="radio" name="type" id="premium-option" value="premium" ngModel
+              required #type="ngModel">
+            <label class="form-check-label" for="premium-option">
+              Premium account
+            </label>
+          </div>
+        </fieldset>
+        <p class="error" *ngIf="type.invalid && type.touched">* you must choose account type</p>
+      </div>
+
+      <div class="col-12 mt-3 text-center">
+        <button type="submit" class="btn btn-primary" style="width: min(80%,250px);" [disabled]="form.invalid">Sign
+          up</button>
+      </div>
+    </form>
+
+  </div>
+
+  <div class="col-lg-4" style="margin-top: 4rem;">
+    <h5>Form Data</h5>
+    <p>Email: {{formResults.loginData.email}}</p>
+    <p>Password: {{formResults.loginData.password}}</p>
+    <p>Address: {{formResults.personalData.addressA}}</p>
+    <p>Address2: {{formResults.personalData.addressB}}</p>
+    <p>City: {{formResults.personalData.city}}</p>
+    <p>State: {{formResults.personalData.state}}</p>
+    <p>Zip: {{formResults.personalData.zip}}</p>
+    <p>Remember: {{formResults.optionsData.remember}}</p>
+    <p>Account type: {{formResults.optionsData.type}}</p>
+
+
+
+
+  </div>
+</div>
+<!-- </div>
+</div> -->

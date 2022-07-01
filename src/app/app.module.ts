@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
@@ -21,9 +21,12 @@ import { AuthService } from './shared/auth.service';
 import { CanDeactivateGuard } from './shared/can-deactivate-guard.service';
 import { ErrorResolver } from './shared/error-resolver.service';
 import { ErrorService } from './shared/error.service';
+import { FormsComponent } from './forms/forms.component';
+import { TemplateFormComponent } from './forms/template-form/template-form.component';
+import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   declarations: [
     AppComponent,
     HelloComponent,
@@ -36,6 +39,9 @@ import { ErrorService } from './shared/error.service';
     AccountControlComponent,
     AccountComponent,
     NewAccountComponent,
+    FormsComponent,
+    TemplateFormComponent,
+    ReactiveFormComponent
   ],
   providers: [
     CounterService,
@@ -48,4 +54,4 @@ import { ErrorService } from './shared/error.service';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

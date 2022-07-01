@@ -1,0 +1,21 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    max-width: min(90%, 1040px);
+    margin: 2rem auto;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+li a {
+    font-weight: bold;
+    color: rgb(11, 155, 203);
+    transition: all 0.5s ease;
+}
+
+li a.active {
+    font-size: 1.1em;
+    color: blueviolet;
+}
