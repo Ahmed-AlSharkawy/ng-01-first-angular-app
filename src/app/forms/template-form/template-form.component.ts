@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class TemplateFormComponent implements OnInit {
 
-  @ViewChild('form') form: NgForm;
+  @ViewChild('form', { static: false }) form: NgForm;
   temp = ''
   states: string[];
   formDefaults = {
