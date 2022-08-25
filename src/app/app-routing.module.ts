@@ -12,6 +12,7 @@ import { ErrorComponent } from './error/error.component';
 import { FormsComponent } from './forms/forms.component';
 import { TemplateFormComponent } from './forms/template-form/template-form.component';
 import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
+import { ServersComponent } from './servers/servers.component';
 
 const appRoutes: Routes = [
   { path: '', component: MyFirstComponent },
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
     component: FormsComponent,
     children: [{ path: 'template', component: TemplateFormComponent }, { path: 'reactive', component: ReactiveFormComponent }],
   },
+  { path: 'servers', component: ServersComponent },
   {
     path: 'error',
     component: ErrorComponent,

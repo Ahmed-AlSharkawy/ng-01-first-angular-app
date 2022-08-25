@@ -1,0 +1,112 @@
+<div style="margin: 0 auto; max-width: min(95%, 850px);">
+  <h1>App Status: {{appStatues | async}}</h1>
+</div>
+<hr style="margin: 0.5rem auto 1.5rem; max-width: min(95%, 850px);">
+
+<form class="row form-group" (ngSubmit)="onSubmit()" [formGroup]="serversForm">
+  <div class="mb-3 col-md-6">
+    <label for="name-input" class="form-label bold">Name</label>
+    <input type="text" class="form-control" id="name-input" formControlName="name" placeholder="server name">
+    <p class="error" *ngIf="serversForm.get('name').invalid && serversForm.get('name').touched">
+      * name is requires
+    </p>
+  </div>
+  <div class="mb-3 col-md-6">
+    <label for="date-input" class="form-label bold">Date</label>
+    <input type="date" class="form-control" id="date-input" formControlName="started">
+    <p class="error" *ngIf="serversForm.get('started').invalid && serversForm.get('started').touched">
+      * date is requires
+    </p>
+  </div>
+
+  <div class="mb-3 col-md-3">
+    <label for="type-input" class="form-label bold">Type</label>
+    <select id="type-input" class="form-select" formControlName="instanceType">
+      <option *ngFor="let item of types; let i = index;" value="{{item}}">{{item}}</option>
+    </select>
+    <p class="error" *ngIf="serversForm.get('instanceType').invalid && serversForm.get('instanceType').touched">
+      * type is requires
+    </p>
+  </div>
+
+  <div class="mb-3 col-md-3">
+    <label for="state-input" class="form-label bold">State</label>
+    <select id="state-input" class="form-select" formControlName="status">
+      <option *ngFor="let item of states; let i = index;" value="{{item}}">{{item}}</option>
+    </select>
+    <p class="error" *ngIf="serversForm.get('status').invalid && serversForm.get('status').touched">
+      * state is requires
+    </p>
+  </div>
+
+  <div class="mb-3 col-md-6 text-right d-flex align-items-end justify-content-end">
+    <button type="submit" class="btn btn-primary" *ngIf="serversForm.valid">
+      {{ isUpdate ? 'Update': 'Add' }} Server
+    </button>
+
+    <p class="error big" *ngIf="serversForm.invalid">Please complete server data</p>
+  </div>
+</form>
+
+<hr style="margin: 0.5rem auto 1.5rem; max-width: min(95%, 850px);">
+
+<div *ngIf="servers && servers.length > 0">
+  <div class="d-flex justify-content-between align-items-center" style="max-width: min(95%, 850px); margin: 0 auto;">
+    <div class="d-flex justify-content-start align-items-center">
+      <h5 *ngFor="let status of statuses" class="ms-2" style="cursor: pointer;">
+        <span class="badge bg-primary" [ngClass]="getFilterClasses(status)" (click)="filterServers(status)">{{status ?
+          status : 'all'}}</span>
+      </h5>
+    </div>
+    <button class="btn btn-outline-danger fw-bold" type="button" (click)="deleteServers()">Clear Servers</button>
+  </div>
+
+  <div class="card" [ngClass]="getCardBorderClasses()" *ngIf="!isFetching && !message">
+    <div class="card-header card-header-primary text-white" [ngClass]="getFilterClasses()">
+      <h5>Servers List</h5>
+    </div>
+    <div class="card-body text-primary">
+      <div class="detalis-section">
+        <div class="list-group">
+          <li *ngFor="let server of servers | filter:currentStatues:'status'" [ngClass]="getListClasses(server)"
+            class="list-group-item d-flex justify-content-between align-items-center">
+
+            <p class="details-log ">
+              <button class="btn btn-light me-2" type="button" (click)="updateServer(server.id)"><i
+                  class="bi bi-pencil-square"></i></button>
+              <button class="btn btn-light me-2" type="button" (click)="deleteServer(server.id)">
+                <i class="bi bi-x-square"></i>
+              </button>
+              <strong>{{server.name}}</strong> |
+              {{server.instanceType | uppercase}} |
+              {{server.started | date:'mediumDate' | uppercase}}
+            </p>
+            <h6><span class="badge bg-light" [ngClass]="getBadgeClasses(server)">{{server.status}}</span></h6>
+          </li>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="isFetching" style="text-align: center; font-size: 10rem; padding: 5rem;">
+  <div class="spinner-border text-primary" role="status" style="width: 5rem; height: 5rem;">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div *ngIf="message" class="{{'alert  alert-' + message.type +' alert-dismissible'}}" role="alert"
+  style="max-width: min(95%, 850px); margin: 2rem auto;">
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="removeMessage()"></button>
+  <div class="d-flex align-items-center">
+    <i class="{{'bi bi-'+ message.icon}}" style="font-size: 3rem; padding: 1rem"></i>
+    <div class="alert-heading">
+      <h3 class="">{{message.header}}</h3>
+      <h5>{{message.title}}</h5>
+    </div>
+  </div>
+  <hr>
+  <p>{{message.message}}</p>
+</div>

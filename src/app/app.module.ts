@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
@@ -24,9 +25,14 @@ import { ErrorService } from './shared/error.service';
 import { FormsComponent } from './forms/forms.component';
 import { TemplateFormComponent } from './forms/template-form/template-form.component';
 import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
+import { ServersComponent } from './servers/servers.component';
+import { ServersService } from './shared/servers.service';
+import { FilterPipe } from './shared/filter.pipe';
+import { RequestInterceptorService } from './shared/request-interceptor.service';
+import { ResponseInterceptorService } from './shared/response-interceptor.service';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule],
   declarations: [
     AppComponent,
     HelloComponent,
@@ -41,7 +47,9 @@ import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.compo
     NewAccountComponent,
     FormsComponent,
     TemplateFormComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    ServersComponent,
+    FilterPipe
   ],
   providers: [
     CounterService,
@@ -51,6 +59,16 @@ import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.compo
     CanDeactivateGuard,
     ErrorService,
     ErrorResolver,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseInterceptorService,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent],
 })

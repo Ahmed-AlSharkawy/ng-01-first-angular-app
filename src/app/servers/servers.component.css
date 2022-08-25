@@ -1,0 +1,54 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: min(95%, 850px);
+  margin: 1rem auto;
+}
+
+.details-log {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+  /* background-color: blue;
+  color: white;
+  padding: 0.5rem 1rem; */
+}
+
+form {
+  max-width: min(95%, 850px);
+  padding: 1rem 2rem;
+  margin: 0 auto;
+}
+
+.error {
+  font-size: 0.8em;
+  font-weight: bold;
+  color: red;
+  margin: 0 0 0.5rem 0;
+}
+
+.error.up {
+
+  margin: 0 0 0.25rem 0;
+}
+
+.error.big {
+  font-size: 1.2em;
+
+}
+
+.form-group {
+  margin-top: 0;
+  padding: 0 1rem;
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.form-group.ng-invalid.ng-touched {
+  border-left: 1px solid red;
+  border-right: 1px solid red;
+  border-radius: 20px;
+}
